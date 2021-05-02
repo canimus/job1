@@ -1,0 +1,11 @@
+sqltimestamp,col1,col2,col3,col4,col5
+1618574879,cat1,cat4,cat2,cat5,cat3
+1618574880,cat1,cat3,cat4,cat2,cat5
+1618574881,cat5,cat3,cat4,cat2,cat1
+1618574882,cat2,cat3,cat5,cat1,cat4
+1618574883,cat2,cat4,cat1,cat3,cat5
+1618574884,cat1,cat2,cat5,cat4,cat3
+1618574885,cat5,cat3,cat2,cat1,cat4
+1618574886,cat3,cat5,cat4,cat2,cat1
+1618574887,cat3,cat2,cat5,cat4,cat1
+1618574888,cat1,cat5,cat3,cat2,cat4
