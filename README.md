@@ -18,3 +18,11 @@ val mavgDF = timedDF
 
 ## Implementation
 
+- Consists in using the socket stream for testing purposes
+- `nc -lk 9999` command to start serving socket input stream
+- Use of the `DataFrame API` from Apache Spark to unify batch and stream options
+- Stream arrives unstructured in `value` column. Is required to break it via `split`
+- Then columns are renamed according to the example with prefix `col`
+- Casting is performed assuming the input is in `unix` millisecond format
+- Aggregation account the total numbers of occurrences in ratio to the total
+- Final computation reports the `mean` number of `cat1` values in window
