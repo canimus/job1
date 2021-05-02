@@ -6,14 +6,14 @@ Please remember that it is streaming data. Here is an example which estimates th
 
 ```scala
 val mavgDF = timedDF
-.withWatermark("sqltimestamp", "5 seconds")
-.groupBy(window(col("sqltimestamp"), "5 minute").as("time_frame"))
-.agg(
-count( when( col("col1") === "cat1", 1)).as("count")
-)
-.withColumn("window_start", col("time_frame")("start").cast(TimestampType))
-.drop("time_frame")
-.orderBy("window_start")
+    .withWatermark("sqltimestamp", "5 seconds")
+    .groupBy(window(col("sqltimestamp"), "5 minute").as("time_frame"))
+    .agg(
+        count( when( col("col1") === "cat1", 1)).as("count")
+    )
+    .withColumn("window_start", col("time_frame")("start").cast(TimestampType))
+    .drop("time_frame")
+    .orderBy("window_start")
 ```
 
 ## Implementation
