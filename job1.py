@@ -1,6 +1,7 @@
 from pyspark.sql import SparkSession, Window
 import pyspark.sql.functions as F
 import pyspark.sql.types as T
+from itertools import product
 
 def main():
     spark = (
@@ -29,9 +30,9 @@ def main():
             .withColumn('raw_columns', F.split('value', ','))
             .drop('value')
             .select(*[F.col('raw_columns')[k].alias(v) for k,v in enumerate(expected_columns)])
-            .withColumn('timestamp', F.from_unixtime('sqltimestamp'))
+            .withColumn('timestamp', F.from_unixtime('sqltimestamp').cast('timestamp'))
             .drop('sqltimestamp')
-            .withWatermark('timestamp', '5 seconds')
+            .withWatermark('timestamp', '30 seconds')
             .groupby(F.window(F.col('timestamp'), '5 minute'))
             .agg(
                 F.sum(F.when(F.col('col1') == 'cat1', 1).otherwise(0)).alias('count_cat1'), 
