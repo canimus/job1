@@ -38,7 +38,7 @@ def main():
                 F.sum(F.when(F.col('col1') == 'cat1', 1).otherwise(0)).alias('count_cat1'), 
                 F.count(F.col('col1')).alias('total')
             )
-            .withColumn('avg_cat1', F.expr('count_cat1 / total'))
+            .withColumn('mean_cat1', F.expr('count_cat1 / total'))
     )
     
     run_query = transformation_1.writeStream.queryName('SocketStream').format('console').option('truncate', 'false').outputMode('update').start()
