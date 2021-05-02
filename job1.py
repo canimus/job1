@@ -41,7 +41,14 @@ def main():
             .withColumn('mean_cat1', F.expr('count_cat1 / total'))
     )
     
-    run_query = transformation_1.writeStream.queryName('SocketStream').format('console').option('truncate', 'false').outputMode('update').start()
+    run_query = (
+        transformation_1
+            .writeStream
+            .queryName('SocketStream')
+            .format('console')
+            .option('truncate', 'false')
+            .outputMode('update')
+    ).start()
     run_query.awaitTermination()
     
 

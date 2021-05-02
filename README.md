@@ -1,3 +1,7 @@
+# Job 1
+
+## Introduction
+
 Please remember that it is streaming data. Here is an example which estimates the count of cat1 in col1 for every 5 minutes. You need to add the code need to estimate the average. If you know the spark, it should take 5-10 minutes.
 
 ```scala
@@ -11,3 +15,6 @@ count( when( col("col1") === "cat1", 1)).as("count")
 .drop("time_frame")
 .orderBy("window_start")
 ```
+
+## Implementation
+
