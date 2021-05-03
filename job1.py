@@ -1,7 +1,5 @@
-from pyspark.sql import SparkSession, Window
+from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
-import pyspark.sql.types as T
-from itertools import product
 
 def main():
     spark = (
@@ -24,12 +22,7 @@ def main():
 
     # Dynamic
     # ===================
-    NUMBER_OF_COLUMNS = 5
-    COLUMN_PREFIX = 'col'
-
-    _c = lambda x: str(x[0])+str(x[1])
-    cartesian_result = map(_c, product([COLUMN_PREFIX], range(1,NUMBER_OF_COLUMNS+1)))
-    expected_columns = ['sqltimestamp'] + list(cartesian_result)
+    expected_columns = [f'col{x}' for x in range(1,6)]
 
     # Static
     # ===================
