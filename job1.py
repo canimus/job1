@@ -22,7 +22,7 @@ def main():
 
     # Dynamic
     # ===================
-    expected_columns = [f'col{x}' for x in range(1,6)]
+    expected_columns = ['sqltimestamp'] + [f'col{x}' for x in range(1,6)]
 
     # Static
     # ===================
